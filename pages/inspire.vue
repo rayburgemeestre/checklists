@@ -1,14 +1,25 @@
 <template>
-  <div>
-    <input type="text" @keyup.enter="addTodo" placeholder="What needs to be done?">
-    <ul>
-      <li v-for="todo in todos" :key="todo.id">
-        <input :checked="todo.done" @change="toggle(todo)" type="checkbox" :id="todo.id">
-        <label :class="{ done: todo.done }" :for="todo.id">{{ todo.text }}</label>
-        <button @click="removeTodo(todo)">remove</button>
-      </li>
-    </ul>
-  </div>
+  <v-row justify="center" align="center">
+    <v-col cols="12" sm="8" md="6">
+      <v-card>
+        <v-card-title class="headline">
+          Checklists
+        </v-card-title>
+        <v-card-text>
+          <input type="text" @keyup.enter="addTodo" placeholder="What needs to be done?">
+        </v-card-text>
+        <v-container>
+          <ul>
+            <li v-for="todo in todos" :key="todo.id">
+              <input :checked="todo.done" @change="toggle(todo)" type="checkbox" :id="todo.id">
+              <label :class="{ done: todo.done }" :for="todo.id">{{ todo.text }}</label>
+              <button @click="removeTodo(todo)">remove</button>
+            </li>
+          </ul>
+        </v-container>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
